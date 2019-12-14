@@ -1,16 +1,17 @@
 window.addEventListener("load", () => {
   const sounds = document.querySelectorAll(".sound");
   const pads = document.querySelectorAll(".pads div");
-  const visual = document.querySelector(".visual");
+  const visuals = document.querySelector(".visuals");
   const colors = [
-    "#60d394",
-    "#d36060",
-    "#c060d3",
-    "#d3d160",
-    "#606bd3",
-    "#60c2d3"
+    "#e7e302",
+    "#630b0b",
+    "#9fb427",
+    "#12291c",
+    "#17234b",
+    "#300616"
   ];
 
+  // adding sound
   pads.forEach((pad, index) => {
     pad.addEventListener("click", function() {
       sounds[index].currentTime = 0;
@@ -19,14 +20,16 @@ window.addEventListener("load", () => {
     });
   });
 
+  // creating bubbles
   const createBubble = index => {
-    //Create bubbles
-    const bubble = document.createElement("div");
-    visual.appendChild(bubble);
+    let bubble = document.createElement("div");
+    visuals.appendChild(bubble);
     bubble.style.backgroundColor = colors[index];
-    bubble.style.animation = `jump 1s ease`;
+    bubble.style.animation = "jump 1s ease";
+
+    // handlling performance
     bubble.addEventListener("animationend", function() {
-      visual.removeChild(this);
+      visuals.removeChild(this);
     });
   };
 });
